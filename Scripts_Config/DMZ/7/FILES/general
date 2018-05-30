@@ -1,0 +1,56 @@
+# the server ip is:
+# 192.168.147.144
+# web ip address:
+# 192.168.3.100
+<VirtualHost *:80>
+	ServerAdmin webmaster@localhost
+	ServerName www.gsx.ct 
+	DocumentRoot /var/general
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /var/general/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	
+	<IfModule mod_userdir.c>
+		UserDir myweb
+		UserDir disabled root
+
+		<Directory /home/*/myweb>
+		        AllowOverride FileInfo AuthConfig Limit Indexes
+		        Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+		        <Limit GET POST OPTIONS>
+		                Order allow,deny
+		                Allow from all
+		        </Limit>
+		        <LimitExcept GET POST OPTIONS>
+		                Order deny,allow
+		                Deny from all
+		        </LimitExcept>
+		</Directory>
+	</IfModule>
+
+</VirtualHost>
+
+

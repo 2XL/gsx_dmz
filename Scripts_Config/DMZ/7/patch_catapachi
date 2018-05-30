@@ -1,0 +1,455 @@
+diff -rupN error/contact.html.var errors_ca//contact.html.var
+--- error/contact.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//contact.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -118,3 +118,12 @@ Bunun bir sunucu hatas&#305; oldu&#287;u
+ <a href="mailto:<!--#echo encoding="url" var="SERVER_ADMIN" -->">site
+ yöneticisi</a> ile ileti&#351;ime geçin.
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++Siusplau contacti amb el 
++<a href="mailto:<!--#echo encoding="url" var="SERVER_ADMIN" -->">webmaster</a>
++en cas que cregui que existeix un error en el servidor.
++----------ca--
++
+diff -rupN error/HTTP_BAD_GATEWAY.html.var errors_ca//HTTP_BAD_GATEWAY.html.var
+--- error/HTTP_BAD_GATEWAY.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_BAD_GATEWAY.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -288,3 +288,22 @@ Body:----------tr--
+     
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Porta d'enllaç dolenta!"
++--><!--#include virtual="include/top.html" -->
++
++	El servidor font ha rebut informació
++	invàlida per part del servidor destí.
++
++  <!--#if expr="$REDIRECT_ERROR_NOTES" -->
++    <!--#include virtual="include/spacer.html" -->
++    <!--#echo encoding="none" var="REDIRECT_ERROR_NOTES" -->
++  <!--#endif -->
++    
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_BAD_REQUEST.html.var errors_ca//HTTP_BAD_REQUEST.html.var
+--- error/HTTP_BAD_REQUEST.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_BAD_REQUEST.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -211,3 +211,17 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Sol·licitut dolenta!"
++--><!--#include virtual="include/top.html" -->
++
++	El buscador ha solicitat una operació;
++	que no pot ser procesada pel servidor.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_FORBIDDEN.html.var errors_ca//HTTP_FORBIDDEN.html.var
+--- error/HTTP_FORBIDDEN.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_FORBIDDEN.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -370,3 +370,29 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Accès prohibit!"
++--><!--#include virtual="include/top.html" -->
++
++  <!--#if expr="$REDIRECT_URL = /\/$/" -->
++
++    Vostè; no te permis per accedir a la direcció
++    solicitada. Existeix la possibilitat que el directori
++    estigui protegit contra lectura o que no existexi la
++    documentació requerida.
++
++  <!--#else -->
++
++    Vostè no te permis per accedir a l'objecte solicitat.
++    Existeix la possibilitat que estigui protegit contra
++    lectura o que no hagi pogut ser llegit pel servidor.
++
++  <!--#endif -->
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_GONE.html.var errors_ca//HTTP_GONE.html.var
+--- error/HTTP_GONE.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_GONE.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -420,3 +420,30 @@ Body:----------tr--
+   
+ <!--#include virtual="include/bottom.html" --> 
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Recurs no disponible!"
++--><!--#include virtual="include/top.html" -->
++
++	Els recursos sol·licitats ja no estan disponibles en
++	aquest servidor i no existeix una direcció alterna.
++
++  <!--#if expr="$HTTP_REFERER" -->
++
++	Li sol·licitem que comuniqui a l'autor de la 
++	<a href="<!--#echo encoding="url" var="HTTP_REFERER"
++        -->">pàgina referida</a> que l'URL ha caducat.
++
++  <!--#else -->
++	
++	Si vosté ha seguit l'URL desde una pàgina externa, 
++	siusplau contacti amb l'autor d'aquella pàgina.
++
++  <!--#endif -->
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_INTERNAL_SERVER_ERROR.html.var errors_ca//HTTP_INTERNAL_SERVER_ERROR.html.var
+--- error/HTTP_INTERNAL_SERVER_ERROR.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_INTERNAL_SERVER_ERROR.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -451,3 +451,34 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Error del servidor!"
++--><!--#include virtual="include/top.html" -->
++
++  <!--#if expr="$REDIRECT_ERROR_NOTES" -->
++
++	El servidor ha trobat un error intern i ha estat
++	impossible completar la seva sol·licitud. 
++
++    <!--#include virtual="include/spacer.html" -->
++
++    Missatge de l'error:
++    <br /><!--#echo encoding="none" var="REDIRECT_ERROR_NOTES" -->
++
++  <!--#else -->
++
++	El servidor ha trobat un error intern i ha estat
++	impossible completar la seva sol·licitud. 
++	Existeix tambe la possibilitat que el servidor 
++	estigui sobrecarregat o d'algun error en un 
++	programa de CGI.
++
++  <!--#endif -->
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_LENGTH_REQUIRED.html.var errors_ca//HTTP_LENGTH_REQUIRED.html.var
+--- error/HTTP_LENGTH_REQUIRED.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_LENGTH_REQUIRED.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -220,3 +220,16 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="TITLE" value="Content-Length dolent!"
++--><!--#include virtual="include/top.html" -->
++
++    Una sol·licitut amb el mètode <!--#echo var="REDIRECT_REQUEST_METHOD" --> 
++    necesita una capçalera <code>Content-Length</code> vàlida.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_METHOD_NOT_ALLOWED.html.var errors_ca/HTTP_METHOD_NOT_ALLOWED.html.var
+--- errors/HTTP_METHOD_NOT_ALLOWED.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca/HTTP_METHOD_NOT_ALLOWED.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -211,3 +211,18 @@ Body:----------tr--
+     
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Mètode no permès!"
++--><!--#include virtual="include/top.html" -->
++
++	El <!--#echo var="REDIRECT_REQUEST_METHOD" -->
++	mètode utilitzat per la seva sol·licitut no està; 
++	permès per l'URL.
++    
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_NOT_FOUND.html.var errors_ca//HTTP_NOT_FOUND.html.var
+--- error/HTTP_NOT_FOUND.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_NOT_FOUND.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -433,3 +433,33 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Objecte no trobat!"
++--><!--#include virtual="include/top.html" -->
++
++    L'adreça requerida no ha estat localitzada
++    en aquest servidor.
++
++  <!--#if expr="$HTTP_REFERER" -->
++
++    L'adreça de la
++    <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">pàgina
++    referida</a> semble tenir algun error o estar caducada. Siusplau
++    comuniqui a l'autor de 
++    <a href="<!--#echo encoding="url" var="HTTP_REFERER" -->">la
++    pàgina</a> sobre l'error.
++
++  <!--#else -->
++
++    Si heu introduit l'adreça manualment li sol·licitem
++    que perfavor revisi les dades i intenti de nou.
++
++  <!--#endif -->
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_NOT_IMPLEMENTED.html.var errors_ca//HTTP_NOT_IMPLEMENTED.html.var
+--- error/HTTP_NOT_IMPLEMENTED.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_NOT_IMPLEMENTED.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -199,3 +199,17 @@ Body:----------tr--
+    
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Sol·licitud no processada!"
++--><!--#include virtual="include/top.html" -->
++
++	El buscador està sol·licitant una acció; 
++	que no pot ser processada.
++    
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_PRECONDITION_FAILED.html.var errors_ca//HTTP_PRECONDITION_FAILED.html.var
+--- error/HTTP_PRECONDITION_FAILED.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_PRECONDITION_FAILED.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -203,3 +203,17 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Precondició dolenta!"
++--><!--#include virtual="include/top.html" -->
++
++	La precondició per que existeixi una 
++	connecció a l'adreça sol·licitada és falsa.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_REQUEST_ENTITY_TOO_LARGE.html.var errors_ca//HTTP_REQUEST_ENTITY_TOO_LARGE.html.var
+--- error/HTTP_REQUEST_ENTITY_TOO_LARGE.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_REQUEST_ENTITY_TOO_LARGE.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -224,3 +224,19 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Entitat sol·licitada massa larga!"
++--><!--#include virtual="include/top.html" -->
++
++	Els recursos establerts no permeten sol·licituds amb
++	el <!--#echo var="REDIRECT_REQUEST_METHOD" --> mètode 
++	subministrat per la seva sol·licitut, o, la quantitat de dades 
++	provistes excedeixen dels límits de capacitat.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_REQUEST_TIME_OUT.html.var errors_ca//HTTP_REQUEST_TIME_OUT.html.var
+--- error/HTTP_REQUEST_TIME_OUT.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_REQUEST_TIME_OUT.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -215,3 +215,18 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" --> 
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Sol·licitut fora de temps!"
++--><!--#include virtual="include/top.html" -->
++
++	El servidor ha tancat la conecció de xarxa 
++	degut a que el buscador no ha acabat la sol·licitut
++	dintre del temps especificat.
++    
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_REQUEST_URI_TOO_LARGE.html.var errors_ca//HTTP_REQUEST_URI_TOO_LARGE.html.var
+--- error/HTTP_REQUEST_URI_TOO_LARGE.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_REQUEST_URI_TOO_LARGE.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -215,3 +215,18 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Adreça subministrada masa llarga!"
++--><!--#include virtual="include/top.html" -->
++
++	La seva sol·licitud no pot processarse degut a que la
++	longitud de l'adreça exedeix la capacitat limit del
++	servidor. 
++    
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_SERVICE_UNAVAILABLE.html.var errors_ca//HTTP_SERVICE_UNAVAILABLE.html.var
+--- error/HTTP_SERVICE_UNAVAILABLE.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_SERVICE_UNAVAILABLE.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -231,3 +231,21 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Servei no disponible!"
++--><!--#include virtual="include/top.html" -->
++
++	El servidor no pot atendre la seva sol·licitut de
++	moment degut a problemes de manteniment
++	o de capacitat.
++
++	Li sol·licitem que siusplau repeteixi l'operació
++	més tard.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_UNAUTHORIZED.html.var errors_ca//HTTP_UNAUTHORIZED.html.var
+--- error/HTTP_UNAUTHORIZED.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_UNAUTHORIZED.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -335,3 +335,27 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Autentificació requerida!"
++--><!--#include virtual="include/top.html" -->
++
++    El servidor no pot certificar que vostè estigui autoritzat
++    per accedir a l'URL "<!--#echo encoding="url" var="REDIRECT_URL" -->".
++    Vostè ha pogut subministrar informació incorrecte accidentalment
++    (exemple una paraula clau invàlida) o, el buscador no sap 
++    com subministrar la informació requerida.
++
++  <!--#include virtual="include/spacer.html" -->
++
++    En el cas que a vostè li estigui permès l'us del
++    document requerit, li solicitem de la manera més atenta
++    que siusplau torni a intentar l'operació; subministrant
++    novament el seu identificador i la seva paraula clau.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_UNSUPPORTED_MEDIA_TYPE.html.var errors_ca//HTTP_UNSUPPORTED_MEDIA_TYPE.html.var
+--- error/HTTP_UNSUPPORTED_MEDIA_TYPE.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_UNSUPPORTED_MEDIA_TYPE.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -199,3 +199,17 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Tipus de dades no suportades!"
++--><!--#include virtual="include/top.html" -->
++
++	Les dades de la seva sol·licitut no es troben en
++	un format acceptat per aquest recurs.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++
+diff -rupN error/HTTP_VARIANT_ALSO_VARIES.html.var errors_ca//HTTP_VARIANT_ALSO_VARIES.html.var
+--- error/HTTP_VARIANT_ALSO_VARIES.html.var	2013-04-05 19:17:30.000000000 +0200
++++ errors_ca//HTTP_VARIANT_ALSO_VARIES.html.var	2013-04-06 16:33:03.000000000 +0200
+@@ -221,3 +221,18 @@ Body:----------tr--
+ 
+ <!--#include virtual="include/bottom.html" -->
+ ----------tr--
++
++Content-language: ca
++Content-type: text/html; charset=ISO-8859-1
++Body:----------ca--
++<!--#set var="CONTENT_LANGUAGE" value="ca"
++--><!--#set var="TITLE" value="Variant negociable!"
++--><!--#include virtual="include/top.html" -->
++
++	No és possible tenir accés degut a 
++	una variant de la sol·licitut és per si 
++	mateixa un recurs negociable.
++
++<!--#include virtual="include/bottom.html" -->
++----------ca--
++

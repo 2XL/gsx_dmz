@@ -1,0 +1,123 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+
+ 
+/////////////////////////////////////////////////////////
+// zona per la DMZ			// ZONA 1 //////
+// ZONA DMZ 
+zone "gsx.ct" {
+	type master;
+	file "/etc/bind/db.gsx.ct";	
+};
+// ZONA DMZ REVERSE
+zone "1.168.192.in-addr.arpa" {
+	type master; 
+	file "/etc/bind/dbi.gsx.general";
+};
+
+ 
+
+
+//////////////////////////////////////////////////////////
+// zona per les INTRANETS		// ZONA 2 /////// 
+// ZONA INTRANET
+zone "intranet.gsx" {
+	type master;
+	file "/etc/bind/db.intranet.gsx";
+};
+
+// ZONA INTRANET REVERSE
+zone "20.172.in-addr-arpa" {
+	type master; 
+	file "/etc/bind/dbi.intranet.gsx.20";
+};
+// ZONA INTRANET REVERSE
+zone "18.172.in-addr-arpa" {
+	type master; 
+	file "/etc/bind/dbi.intranet.gsx.18";
+};
+// 
+//Resposta: Perquè a la intranet hem fet subnetting i el Bind no li va bé el subnetting que no estigui alineat al byte (és a dir, sols li va bé les màscares: /8 /16 i /24).
+
+//Al nostre cas, les dues màquines:
+//el PC32.intranet.gsx.ct
+//www.intranet.gsx.ct
+
+//estan a diferent subxarxa, però al mateix domini DNS (intranet.gsx.ct)
+//i per això els fiquem en un únic fitxer de zona.
+
+//Però per a la resolució inversa esl hem de ficar a dos fitxers diferents, doncs el segon byte de les seves IPs és diferent. Per exemple, si heu fet un subnetting /15 usant les xarxes 24 i 28, les zones serien:
+
+//24.172.in-addr.arpa.
+//28.172.in-addr.arpa.
+
+//;192.168.1.100	www.gsx.ct	 general defecte
+//;192.168.1.100	www.cataleg.gsx.ct	cataleg
+//;192.168.1.100	www.productes.gsx.ct	productes
+//;192.168.1.200	www.botiga.gsx.ct	botiga
+//;172.17.1.2		www.intranet.gsx	intranet
+
+
+
+
+//////////////////////////////////////
+//zone "cataleg.gsx.ct" {	/////		
+//	type slave;
+//	file "cataleg.gsx.ct.bk" 
+//	//  ipadrres of master server
+//	masters { 172.18.1.100; };
+
+// ?? n
+
+
+// zone "0.0.127.in-addr.arpa" {
+//	type master;
+//	file "localhost.rev";
+//	notify no;
+//};
+
+// nom de la zona inclou els bytes d'identiicacioó de la xarxa en ordre invers
+
+
+// provide a reverse mapping for the loopback address
+//
+//zone "0.0.127.in-addr.arpa" {		
+//	type master;
+//	file "localhost.rev";
+//	notify no;
+//};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

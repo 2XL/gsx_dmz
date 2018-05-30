@@ -1,0 +1,15 @@
+127.0.0.1	localhost
+127.0.1.1	DS.localdomain	DS
+
+172.18.3.100	www.gsx.ct	 	general defecte
+172.18.3.100	www.cataleg.gsx.ct	cataleg
+172.18.3.100	www.productes.gsx.ct	productes
+172.18.3.200	www.botiga.gsx.ct	botiga
+172.20.3.2	www.intranet.gsx	intranet 
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

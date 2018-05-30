@@ -1,0 +1,6 @@
+#! /bin/bash
+
+echo ' practica 9 GSX - servidor DHCP , apartat client-Intranet'
+
+cp FILES/interfaces /etc/network/
+cp FILES/hosts /etc/
